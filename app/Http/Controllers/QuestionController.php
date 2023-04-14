@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Models\Result;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionCreateRequest;
 
 class QuestionController extends Controller
 {
@@ -14,15 +15,23 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        $questions = Question::paginate(5);
+        return view('admin', compact('questions'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(QuestionCreateRequest $request)
     {
-        //
+        try {
+        Question::create($request->validated());
+        session()->flash('success', 'Question has been created successfully!');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Failed to create the question!');
+        }
+
+        return redirect()->back();
     }
 
     /**
@@ -36,23 +45,19 @@ class QuestionController extends Controller
         // Get the question for the current index
         $question = $questions->get($questionIndex-1);
 
-        if($question == null)
-        {
+        if($question === null) {
             return 'Done';
         }
 
-        else
-        {
-            // Render the question view with the current question
-            //$questionView = view('question', ['question' => $question])->render();
+        // Render the question view with the current question
+        //$questionView = view('question', ['question' => $question])->render();
 
-            // Return the question view and the next question index
-            return view('question', [
-                'question' => $question,
-                //'questionView' => $questionView,
-                'nextQuestionIndex' => $questionIndex
-            ]);
-        }
+        // Return the question view and the next question index
+        return view('question', [
+            'question' => $question,
+            //'questionView' => $questionView,
+            'nextQuestionIndex' => $questionIndex
+        ]);
     }
 
      /**
@@ -87,16 +92,30 @@ class QuestionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(QuestionCreateRequest $request)
     {
-        //
+        try {
+            $question = Question::findOrFail($request->question_id);
+            $question->update($request->validated());
+            session()->flash('success', 'Question has been updated successfully!');
+        } catch (ModelNotFoundException $e) {
+            session()->flash('error', 'Failed to update the question!');
+        }
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        try {
+            $question = Question::findOrFail($request->question_id);
+            $question->delete();
+            session()->flash('success', 'Question has been deleted successfully!');
+        } catch (ModelNotFoundException $e) {
+            session()->flash('error', 'Failed to delete the question!');
+        }
+        return redirect()->back();
     }
 }

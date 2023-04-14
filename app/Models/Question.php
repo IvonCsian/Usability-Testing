@@ -9,9 +9,13 @@ class Question extends Model
 {
     protected $table = 'question';
         protected $fillable = [
-        'question',
-        'question_img',
-        'time'
+            'id',
+            'question',
+            'question_img',
+            'x_start',
+            'x_end',
+            'y_start',
+            'y_end'
     ];
 
     protected $hidden = [];
