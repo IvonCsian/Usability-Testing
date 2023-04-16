@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
     body {
         color: #566787;
@@ -289,6 +290,10 @@ $(document).ready(function(){
 							<h2>Manage <b>Questions</b></h2>
 						</div>
 						<div class="col-xs-6">
+                            <form method="POST" action="/auth/admin/logout">
+                                @csrf
+                                <input type="submit" class="btn btn-danger" value="LOGOUT" style="height: 33px; margin-left: 20px;">
+                            </form>
 							<a href="#addQuestionModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Question</span></a>
 {{--							<a href="#deleteQuestionModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>--}}
 						</div>

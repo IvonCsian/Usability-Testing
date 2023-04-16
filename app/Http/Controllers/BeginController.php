@@ -18,12 +18,4 @@ class BeginController extends Controller
 
         return redirect()->route('questions.show', ['questionIndex' => 1]);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show()
-    {
-        return view('begin');
-    }
 }

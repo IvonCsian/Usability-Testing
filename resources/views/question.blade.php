@@ -112,12 +112,12 @@
             <p>Waktu Jawab :</p>
             <p id="clock">00</p>
             <img id="myImage" src="{{$question->question_img}}" alt="test_image" width="640" height="360">
+             <form method="post" action="{{ route('questions.store', ['questionIndex' => $nextQuestionIndex])}}">
+                @csrf
+                <input type="hidden" name="time" id="time">
+                <button id="submit" style="display: none">Submit</button>
+            </form>
         </div>
-        <form method="post" action="{{ route('questions.store', ['questionIndex' => $nextQuestionIndex])}}">
-            @csrf
-            <input type="hidden" name="time" id="time">
-            <button id="submit" style="display: none">Submit</button>
-        </form>
   </div>
 </body>
 </html>

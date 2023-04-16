@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usability Test</title>
+    <title>Admin Login</title>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
@@ -78,17 +78,17 @@
         top: -10px;
       }
       .input-box input{
-          width: 100%;
-          height: 50px;
-          background: transparent;
-          border: none;
-          outline: none;
-          font-size: 1em;
-          padding-top: 35px;
-          padding-right: 5px;
-          padding-bottom: 13px;
-          padding-left: 5px;
-          color: #000000;
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-size: 1em;
+        padding-top: 35px;
+        padding-right: 5px;
+        padding-bottom: 13px;
+        padding-left: 5px;
+        color: #000000;
       }
       .input-box ion-icon{
         position: absolute;
@@ -102,14 +102,19 @@
 <body>
     <div class="quiz-container" id="quiz">
     <div class="quiz-header">
-      <h2>Usability Test</h2>
-      <form method="post" action="/">
+      <h2>Admin Login</h2>
+      <form method="post" action="/auth/admin/login">
           @csrf
-        <div class="input-box">
-          <ion-icon name="person-circle-outline"></ion-icon>
-          <input id="name" name="name" type="text" required>
-          <label for="">Nama</label>
-        </div>
+          <div class="input-box">
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <input id="email" name="email" type="email" required>
+              <label for="">Email</label>
+          </div>
+          <div class="input-box">
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <input id="password" name="password" type="password" required>
+              <label for="">Password</label>
+          </div>
           <button id="submit">Submit</button>
     </form>
     </div>

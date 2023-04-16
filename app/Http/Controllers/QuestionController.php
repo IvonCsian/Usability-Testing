@@ -46,7 +46,7 @@ class QuestionController extends Controller
         $question = $questions->get($questionIndex-1);
 
         if($question === null) {
-            return redirect('/result');
+            return redirect()->route('result.show');
         }
 
         // Render the question view with the current question
@@ -77,14 +77,6 @@ class QuestionController extends Controller
         $nextQuestionIndex = $questionIndex + 1;
 
         return redirect()->route('questions.show', ['questionIndex' => $nextQuestionIndex]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**

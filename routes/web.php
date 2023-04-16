@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeginController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\ResultController;
@@ -17,16 +18,27 @@ use App\Http\Controllers\ResultController;
 |
 */
 
-//Admin Routes
-Route::get('/admin', [QuestionController::class, 'index']);
-Route::post('/admin', [QuestionController::class, 'create'])->name('admin.store');
-Route::put('/admin', [QuestionController::class, 'update'])->name('admin.update');
-Route::delete('/admin', [QuestionController::class, 'destroy'])->name('admin.destroy');
+//Admin Login
+ Route::get('/auth/admin', function () {
+        return view('admin-login');
+    })->name('admin.login');
+ Route::post('/auth/admin/login', [AuthController::class, 'login']);
+ Route::post('/auth/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+//Admin CRUD
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/admin', [QuestionController::class, 'index'])->name('admin');
+    Route::post('/admin', [QuestionController::class, 'create'])->name('admin.store');
+    Route::put('/admin', [QuestionController::class, 'update'])->name('admin.update');
+    Route::delete('/admin', [QuestionController::class, 'destroy'])->name('admin.destroy');
+});
 
 //Usability Testing Routes
-Route::get('/', [BeginController::class, 'show']);
+Route::get('/', function () {
+    return view('begin');
+});
 Route::post('/', [BeginController::class, 'store']);
 Route::get('/questions/{questionIndex}', [QuestionController::class, 'show'])->name('questions.show');
 Route::post('/questions/{questionIndex}', [QuestionController::class, 'store'])->name('questions.store');
-Route::get('/result', [ResultController::class, 'show']);
+Route::get('/result', [ResultController::class, 'show'])->name('result.show');
 
