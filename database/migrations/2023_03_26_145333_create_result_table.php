@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('user_id');
             $table->string('question_id');
             $table->integer('time');
+            $table->timestamps();
         });
     }
 
