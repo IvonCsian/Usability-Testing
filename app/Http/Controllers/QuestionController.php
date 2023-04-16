@@ -46,7 +46,7 @@ class QuestionController extends Controller
         $question = $questions->get($questionIndex-1);
 
         if($question === null) {
-            return 'Done';
+            return redirect('/result');
         }
 
         // Render the question view with the current question
@@ -66,13 +66,11 @@ class QuestionController extends Controller
     public function store(Request $request, $questionIndex)
     {
         $question = Question::find($questionIndex);
-        $time = $request->input('time');
-        $user_id = session('user_id');
 
-        $result = Result::create([
-            'user_id' => $user_id,
+        Result::create([
+            'user_id' => session('user_id'),
             'question_id' => $question->id,
-            'time' => $time,
+            'time' => $request->input('time'),
         ]);
 
         // Get the next question index

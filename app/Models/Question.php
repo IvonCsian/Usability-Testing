@@ -19,6 +19,7 @@ class Question extends Model
     ];
 
     protected $hidden = [];
+    
     use HasFactory;
 
     public function result()

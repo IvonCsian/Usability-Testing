@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Usability Test</title>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
@@ -103,7 +103,7 @@
     <div class="quiz-container" id="quiz">
     <div class="quiz-header">
       <h2>Usability Test</h2>
-      <form method="post" action="/intro">
+      <form method="post" action="/">
           @csrf
         <div class="input-box">
           <ion-icon name="person-circle-outline"></ion-icon>
