@@ -111,7 +111,7 @@
               <label for="">Email</label>
           </div>
           <div class="input-box">
-              <ion-icon name="person-circle-outline"></ion-icon>
+              <ion-icon name="lock-closed-outline"></ion-icon>
               <input id="password" name="password" type="password" required>
               <label for="">Password</label>
           </div>

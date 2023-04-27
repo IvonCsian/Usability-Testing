@@ -31,6 +31,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/admin', [QuestionController::class, 'create'])->name('admin.store');
     Route::put('/admin', [QuestionController::class, 'update'])->name('admin.update');
     Route::delete('/admin', [QuestionController::class, 'destroy'])->name('admin.destroy');
+    Route::get('/admin-result', [ResultController::class, 'index'])->name('admin-result');
+    Route::put('/admin-result', [ResultController::class, 'update'])->name('admin-result.update');
+    Route::delete('/admin-result', [ResultController::class, 'destroy'])->name('admin-result.destroy');
 });
 
 //Usability Testing Routes
