@@ -60,7 +60,7 @@
           background-color: #ffffff;
           position: relative;
           margin: 30px 0;
-          width: 310px;
+          width: 500px;
           border-bottom: 2px solid #000000;
       }
       .input-box label{
@@ -111,6 +111,7 @@
           <label for="">Nama</label>
         </div>
           <button id="submit">Submit</button>
+          <a> Contact Us for <a href="/auth/admin">Login As Admin</a> : shirookumachan@gmail.com </a>
     </form>
     </div>
   </div>
